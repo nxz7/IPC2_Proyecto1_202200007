@@ -6,12 +6,14 @@ from nodo_senal import nodo_senal
 from insertar import imprimir
 from insertar import insertar_dato
 from insertar import insertar_senal
-
+from procesar import procesar_bi
+import graphviz
 
 def mostrar_menu():
     
     lista_senalesM = lista_senales()
     lista_datosM = lista_datos()
+    global ruta
 
     while True:
         print("\n-----------------------------------")
@@ -35,26 +37,41 @@ def mostrar_menu():
             # ITERAR SOBRE SENAL -  SENAL> DATOS
             for senal_elem in rt.findall('senal'):
                 nombre = senal_elem.get('nombre')
-                t = int(senal_elem.get('t'))
-                A = int(senal_elem.get('A'))
-            # METER LA SEÑAL
-                nueva_senal = insertar_senal(lista_senalesM, nombre, t, A)
-            # ITERAR EN LO DEL DATO
-                for dato_elem in senal_elem.findall('dato'):
-                    t_dato = int(dato_elem.get('t'))
-                    A_dato = int(dato_elem.get('A'))
-                    valor = int(dato_elem.text)
-            # METER LOS DATOS EN LA SEÑAL
-                    insertar_dato(nueva_senal, t_dato, A_dato, valor)
-            imprimir(lista_senalesM)
+                t = int(senal_elem.get('t', '0'))  # CONDICION DE QUE CERO SI FALTA
+                A = int(senal_elem.get('A', '0'))  
 
+                nueva_senal = insertar_senal(lista_senalesM, nombre, t, A)
+
+                for dato_elem in senal_elem.findall('dato'):
+                    t_dato = int(dato_elem.get('t', '0'))  
+                    A_dato = int(dato_elem.get('A', '0'))  # CONDICION DE QUE CERO SI FALTA
+                    valor = int(dato_elem.text)
+
+                    insertar_dato(nueva_senal, t_dato, A_dato, valor)
+
+            imprimir(lista_senalesM)
 
         elif opcion == "2":
             print("-------Procesar archivo---------")
+            print("-------GENERANDO LA MATRIZ DE PATRONES---------")
+            lista_bi = procesar_bi(lista_senalesM, lista_datosM)
+            imprimir(lista_bi)
 
+            print("-------GENERANDO LA MATRIZ FINAL---------")
 
         elif opcion == "3":
             print("-------archivo de salida---------")
+            #prueba buscar filas
+            '''
+            nombre_buscar = input("Ingrese el nombre de la señal que desea buscar: ")
+            senal_encontrada = lista_senalesM.obtener_senal_por_nombre(nombre_buscar)
+            if senal_encontrada:
+                lista_senalesM.imprimir_senal_completa(nombre_buscar)
+            else:
+                print(f"No se encontró la señal '{nombre_buscar}'.")
+            '''
+
+
         elif opcion == "4":
             print("NATALIA MARIEL CALDERON ECHEVERRIA")
             print("202200007")
@@ -62,12 +79,20 @@ def mostrar_menu():
             print("4to SEMESTRE")
         elif opcion == "5":
             print("-------GENERAR GRAFICA---------")
+
             print("1.matriz de archivo de entrada")
             print("2.matriz reducida")
             opcion5 = input("Ingrese una opción: ")
             #---
             if opcion5=="1":
-                print("GRAFICA DE MATRIZ DE ENTRADA GENERADA CORRECTAMENTE")
+                nombre_buscar = input("Ingrese el nombre de la señal que desea graficar: ")
+                senal_encontrada = lista_senalesM.obtener_senal_por_nombre(nombre_buscar)
+                if senal_encontrada:
+                    lista_senalesM.generar_grafico_senal(nombre_buscar)
+                    print("GRAFICA DE MATRIZ DE ENTRADA GENERADA CORRECTAMENTE")
+                else:
+                    print(f"No se encontró la señal '{nombre_buscar}'.")
+                
             elif opcion5=="2":
                 print("GRAFICA DE MATRIZ REDUCIDA GENERADA CORRECTAMENTE")
             else:
@@ -82,4 +107,5 @@ def mostrar_menu():
         else:
             print("ERROR - OPCION INVALIDA")
 
-mostrar_menu()
+if __name__ == "__main__":
+    mostrar_menu()

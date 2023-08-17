@@ -33,3 +33,4 @@ def imprimir(lista):
             actual_dato = actual_dato.siguiente_dato
         print()
         actual_senal = actual_senal.siguiente_senal
+
