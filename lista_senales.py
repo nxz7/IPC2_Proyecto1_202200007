@@ -62,7 +62,29 @@ class lista_senales:
             print()
         else:
             print(f"No se encontró la señal '{nombre}'.")
+    #SOLO DATOS, MATRIZ HACIA ABAJO 
+    def generar_grafico_senal(self, nombre):
+        senal = self.obtener_senal_por_nombre(nombre)
+        if senal:
+            dot = graphviz.Digraph(format='png')
+            dot.node('S', nombre)
+            actual_dato = senal.primero_dato
+            row_count = 0
+            while actual_dato:
+                if row_count == 0 or actual_dato.t != row_count:
+                    row_count = actual_dato.t
+                    dot.node(f'dato{row_count}_1', f'Fila {row_count}')
+                    dot.edge('S', f'dato{row_count}_1')
+                dot.node(f'dato{row_count}_{actual_dato.A}', str(actual_dato.valor))
+                if actual_dato.A > 1:
+                    dot.edge(f'dato{row_count}_{actual_dato.A-1}', f'dato{row_count}_{actual_dato.A}')
+                actual_dato = actual_dato.siguiente_dato
+            dot.render(nombre, view=False)
+        else:
+            print(f"No se encontró la señal '{nombre}'.")
 
+#FILAS - HORIZONTAS
+'''
     def generar_grafico_senal(self, nombre):
         senal = self.obtener_senal_por_nombre(nombre)
         if senal:
@@ -83,8 +105,9 @@ class lista_senales:
             dot.render('grafica', view=False)
         else:
             print(f"No se encontró la señal '{nombre}'.")
-
-#OTRO ESTILO DE GRAFICO
+'''
+#OTRO ESTILO DE GRAFICO - DATOS Y MATRIX PARA ABAJO
+#'''
 '''
     def generar_grafico_senal(self, nombre):
         senal = self.obtener_senal_por_nombre(nombre)

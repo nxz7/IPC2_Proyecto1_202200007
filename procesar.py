@@ -8,6 +8,8 @@ from insertar import insertar_dato
 from insertar import insertar_senal
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import fromstring
+from nodo_procesado import nodo_procesado
+from lista_procesados import lista_procesados
 
 def procesar_bi(lista_senalesM, lista_datosM):
     nueva_lista = lista_senales()
@@ -26,4 +28,3 @@ def procesar_bi(lista_senalesM, lista_datosM):
         actual_senal= actual_senal.siguiente_senal
     
     return nueva_lista
-

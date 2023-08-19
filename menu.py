@@ -7,13 +7,22 @@ from insertar import imprimir
 from insertar import insertar_dato
 from insertar import insertar_senal
 from procesar import procesar_bi
-import graphviz
+from nodo_procesado import nodo_procesado
+from lista_procesados import lista_procesados
+from lista_procesados import procesar_and_generate_data_string
+from lista_procesados import procesar_bi_and_generar_lista_procesados
+from lista_procesados import imprimir_procesados
 
+import graphviz
+#-------------------------------------
+
+#-------------------------------
 def mostrar_menu():
     
     lista_senalesM = lista_senales()
     lista_datosM = lista_datos()
     global ruta
+    lista_final = lista_senales()
 
     while True:
         print("\n-----------------------------------")
@@ -57,7 +66,9 @@ def mostrar_menu():
             lista_bi = procesar_bi(lista_senalesM, lista_datosM)
             imprimir(lista_bi)
 
-            print("-------GENERANDO LA MATRIZ FINAL---------")
+            print("-------GENERANDO LA MATRIZ DE PROCESADOS---------")
+            lista_bi_procesados, lista_procesadosM = procesar_bi_and_generar_lista_procesados(lista_bi)
+            imprimir_procesados(lista_procesadosM)
 
         elif opcion == "3":
             print("-------archivo de salida---------")
@@ -94,7 +105,9 @@ def mostrar_menu():
                     print(f"No se encontró la señal '{nombre_buscar}'.")
                 
             elif opcion5=="2":
-                print("GRAFICA DE MATRIZ REDUCIDA GENERADA CORRECTAMENTE")
+
+        
+                print("MATRIZ REDUCIDA GENERADA CORRECTAMENTE")
             else:
                 print("ERROR - OPCION INVALIDA")
 
