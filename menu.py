@@ -6,12 +6,12 @@ from nodo_senal import nodo_senal
 from insertar import imprimir
 from insertar import insertar_dato
 from insertar import insertar_senal
-from procesar import procesar_bi
-from nodo_procesado import nodo_procesado
-from lista_procesados import lista_procesados
-from lista_procesados import procesar_and_generate_data_string
-from lista_procesados import procesar_bi_and_generar_lista_procesados
-from lista_procesados import imprimir_procesados
+from procesar import procesar_bi, procesar_lista_comparacion
+from ListaComparacion import ListaComparacion
+from NodoRepetidos import NodoRepetidos
+from NodoT import NodoT
+from ListaRepetidos import ListaRepetidos
+from ListaT import ListaT
 
 import graphviz
 #-------------------------------------
@@ -66,9 +66,63 @@ def mostrar_menu():
             lista_bi = procesar_bi(lista_senalesM, lista_datosM)
             imprimir(lista_bi)
 
-            print("-------GENERANDO LA MATRIZ DE PROCESADOS---------")
-            lista_bi_procesados, lista_procesadosM = procesar_bi_and_generar_lista_procesados(lista_bi)
-            imprimir_procesados(lista_procesadosM)
+            print("-------GENERANDO Lista de comparacion---------")
+
+            lista_comparacion = ListaComparacion()
+
+# iterar en la señal
+            actual_senal = lista_bi.primero
+            while actual_senal:
+                nombre_senal = actual_senal.nombre
+                t_comun = None
+                string_datos_comun = ""
+
+    #iterar en los nodos de cada señak
+                actual_dato = actual_senal.primero_dato
+                while actual_dato:
+                    if t_comun is None:
+                        t_comun = actual_dato.t
+                    if actual_dato.t == t_comun:
+                        string_datos_comun += str(actual_dato.valor) + " "
+                    else:
+            # insertar cuando t cambie
+                        lista_comparacion.insertar(nombre_senal, t_comun, string_datos_comun)
+                        t_comun = actual_dato.t
+                        string_datos_comun = str(actual_dato.valor) + " "
+                    actual_dato = actual_dato.siguiente_dato
+
+    #INSERTAR el valor de t
+                lista_comparacion.insertar(nombre_senal, t_comun, string_datos_comun)
+                actual_senal = actual_senal.siguiente_senal
+
+#IMPRIMIR lista_comparacion
+            actual_nodo_comparacion = lista_comparacion.primero
+            while actual_nodo_comparacion:
+                print("Nombre:", actual_nodo_comparacion.nombre)
+                print("t:", actual_nodo_comparacion.t)
+                print("Datos:", actual_nodo_comparacion.string_datos)
+                print("-" * 20)
+                actual_nodo_comparacion = actual_nodo_comparacion.siguiente
+                #-----------------------------------------------------------------------
+            print("-------ver repetidos---------")
+            lista_repetidos = ListaRepetidos()
+# AGREGAR A LA LISTA DE REPETIDOS Y LUEGO SE IMPRIME EN BASE A LA LISTA DE COMPARACION ANTERIOR
+            procesar_lista_comparacion(lista_comparacion, lista_repetidos)
+            print("-------proceso de imprimir---------")
+
+            actual_nodo_repetidos = lista_repetidos.primero
+            while actual_nodo_repetidos:
+                print("Nombre:", actual_nodo_repetidos.nombre)
+                print("t values:", end=" ")
+    
+                actual_t_node = actual_nodo_repetidos.t_values.primero
+                while actual_t_node:
+                    print(actual_t_node.t, end=" ")
+                    actual_t_node = actual_t_node.siguiente
+    
+                print("\n" + "-" * 20)
+                actual_nodo_repetidos = actual_nodo_repetidos.siguiente
+            #------t repetidas:
 
         elif opcion == "3":
             print("-------archivo de salida---------")
