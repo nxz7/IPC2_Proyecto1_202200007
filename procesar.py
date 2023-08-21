@@ -1,4 +1,6 @@
+from xml.dom.minidom import Element
 import xml.etree.ElementTree as ET
+from xml.etree.ElementTree import Element, SubElement, ElementTree
 from lista_senales import lista_senales
 from lista_datos import lista_datos
 from nodo_dato import nodo_dato
@@ -11,6 +13,9 @@ from xml.etree.ElementTree import fromstring
 from ListaComparacion import ListaComparacion
 from NodoRepetidos import NodoRepetidos
 from NodoT import NodoT
+from ListaRepetidos import ListaRepetidos
+from insertar import obtener_dato
+from ListaResultado import ListaResultado
 #from nodo_procesado import nodo_procesado
 #from lista_procesados import lista_procesados
 
@@ -46,7 +51,7 @@ def procesar_lista_comparacion(lista_comp, lista_rep):
         actual_nodo_repetidos = lista_rep.primero
         while actual_nodo_repetidos:
             if actual_nodo_repetidos.nombre == nombre_actual and actual_nodo_repetidos.string_datos == string_actual:
-                print("Match found in lista_repetidos")
+                print("SE ENCONTRO UN PATRON REDUCIDO")
                 actual_nodo_repetidos.t_values.insertar(t_actual)
                 repetido_existente = True
                 break
@@ -72,4 +77,3 @@ def procesar_lista_comparacion(lista_comp, lista_rep):
             if actual_nodo_repetidos.nombre == nombre_actual and actual_nodo_repetidos.string_datos == string_actual:
                 break
             actual_nodo_repetidos = actual_nodo_repetidos.siguiente
-

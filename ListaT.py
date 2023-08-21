@@ -12,3 +12,9 @@ class ListaT:
             while actual.siguiente:
                 actual = actual.siguiente
             actual.siguiente = nuevo_nodo
+    
+    def iterar(self):
+        actual = self.primero
+        while actual:
+            yield actual.t
+            actual = actual.siguiente

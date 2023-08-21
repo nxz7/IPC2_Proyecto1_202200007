@@ -2,8 +2,8 @@
 <senales>
 	<senal nombre="Prueba 1" t="5" A="4">
  		<dato t="1" A="1">2</dato>
- 		<dato t="1" A="2">3</dato>
  		<dato t="1" A="3">0</dato>
+ 		<dato t="1" A="2">3</dato>
  		<dato t="1" A="4">4</dato>
  		<dato t="2" A="1">0</dato>
  		<dato t="2" A="2">0</dato>
@@ -13,11 +13,11 @@
  		<dato t="3" A="2">4</dato>
  		<dato t="3" A="3">0</dato>
  		<dato t="3" A="4">2</dato>
- 		<dato t="4" A="1">1</dato>
- 		<dato t="4" A="2">0</dato>
- 		<dato t="4" A="3">1</dato>
- 		<dato t="4" A="4">5</dato>
  		<dato t="5" A="1">0</dato>
+ 		<dato t="4" A="2">7</dato>
+ 		<dato t="4" A="3">7</dato>
+ 		<dato t="4" A="4">7</dato>
+ 		<dato t="4" A="1">7</dato>
  		<dato t="5" A="2">0</dato>
  		<dato t="5" A="3">3</dato>
  		<dato t="5" A="4">1</dato>
@@ -39,5 +39,16 @@
  		<dato t="4" A="2">0</dato>
  		<dato t="4" A="3">1</dato>
  		<dato t="4" A="4">5</dato>
+ 	</senal>
+	<senal nombre="Prueba 3" t="3" A="3">
+ 		<dato t="1" A="3">2</dato>
+ 		<dato t="2" A="1">3</dato>
+ 		<dato t="1" A="2">0</dato>
+ 		<dato t="1" A="1">4</dato>
+ 		<dato t="2" A="2">0</dato>
+ 		<dato t="2" A="3">6</dato>
+ 		<dato t="3" A="1">0</dato>
+ 		<dato t="3" A="2">0</dato>
+ 		<dato t="3" A="3">7</dato>
  	</senal>
 </senales>

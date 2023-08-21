@@ -83,6 +83,26 @@ class lista_senales:
         else:
             print(f"No se encontró la señal '{nombre}'.")
 
+    def existe_senal(self, nombre, t, A):
+        senal = self.obtener_senal_por_nombre(nombre)
+        if senal:
+            actual_dato = senal.primero_dato
+            while actual_dato:
+                if actual_dato.t == t and actual_dato.A == A:
+                    return True
+                actual_dato = actual_dato.siguiente_dato
+        return False
+
+    def obtener_valor(self, nombre, t, A):
+        senal = self.obtener_senal_por_nombre(nombre)
+        if senal:
+            actual_dato = senal.primero_dato
+            while actual_dato:
+                if actual_dato.t == t and actual_dato.A == A:
+                    return actual_dato.valor
+                actual_dato = actual_dato.siguiente_dato
+        return 0
+
 #FILAS - HORIZONTAS
 '''
     def generar_grafico_senal(self, nombre):

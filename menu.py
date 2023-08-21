@@ -4,17 +4,21 @@ from lista_datos import lista_datos
 from nodo_dato import nodo_dato
 from nodo_senal import nodo_senal
 from insertar import imprimir
-from insertar import insertar_dato
-from insertar import insertar_senal
+from insertar import insertar_dato, datos_ordenados
+from insertar import insertar_senal,obtener_dato
 from procesar import procesar_bi, procesar_lista_comparacion
 from ListaComparacion import ListaComparacion
 from NodoRepetidos import NodoRepetidos
 from NodoT import NodoT
 from ListaRepetidos import ListaRepetidos
 from ListaT import ListaT
-
+from ListaResultado import NodoResultado,ListaResultado,obtener_dato_from_repetidos_and_senales,xml_de_resultado,guardar_xml
+#from ListaGrupos import ListaGrupos
+import os
 import graphviz
 #-------------------------------------
+# Add this function to menu.py
+
 
 #-------------------------------
 def mostrar_menu():
@@ -22,7 +26,9 @@ def mostrar_menu():
     lista_senalesM = lista_senales()
     lista_datosM = lista_datos()
     global ruta
-    lista_final = lista_senales()
+
+
+    
 
     while True:
         print("\n-----------------------------------")
@@ -56,7 +62,7 @@ def mostrar_menu():
                     A_dato = int(dato_elem.get('A', '0'))  # CONDICION DE QUE CERO SI FALTA
                     valor = int(dato_elem.text)
 
-                    insertar_dato(nueva_senal, t_dato, A_dato, valor)
+                    datos_ordenados(nueva_senal, t_dato, A_dato, valor)
 
             imprimir(lista_senalesM)
 
@@ -122,20 +128,18 @@ def mostrar_menu():
     
                 print("\n" + "-" * 20)
                 actual_nodo_repetidos = actual_nodo_repetidos.siguiente
-            #------t repetidas:
+#----------------------- YA FINAL
+            print("-------SENALES REDUCIDAS---------")
+            resultado = obtener_dato_from_repetidos_and_senales(lista_repetidos, lista_senalesM)
+            resultado.imprimir()
 
         elif opcion == "3":
             print("-------archivo de salida---------")
-            #prueba buscar filas
-            '''
-            nombre_buscar = input("Ingrese el nombre de la señal que desea buscar: ")
-            senal_encontrada = lista_senalesM.obtener_senal_por_nombre(nombre_buscar)
-            if senal_encontrada:
-                lista_senalesM.imprimir_senal_completa(nombre_buscar)
-            else:
-                print(f"No se encontró la señal '{nombre_buscar}'.")
-            '''
+            user_file_path = input("ingrese la ruta donde desea guardar el archivo: ")
 
+            xml_data = xml_de_resultado(resultado)
+            guardar_xml(xml_data, user_file_path)
+            print("ARCHIVO DE SALIDA DE MATRIZ REDUCIDA GENERADO CORRECTAMENTE")
 
         elif opcion == "4":
             print("NATALIA MARIEL CALDERON ECHEVERRIA")
@@ -166,13 +170,14 @@ def mostrar_menu():
                 print("ERROR - OPCION INVALIDA")
 
         elif opcion == "6":
-            print("-------6---------")
+            print("-------Procesar lista repetida---------")
 
         elif opcion == "7":
             print("Saliendo del sistema")
             break
         else:
             print("ERROR - OPCION INVALIDA")
+
 
 if __name__ == "__main__":
     mostrar_menu()

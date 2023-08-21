@@ -4,3 +4,4 @@ class nodo_dato:
         self.A = A
         self.valor = valor
         self.siguiente_dato = None
+
