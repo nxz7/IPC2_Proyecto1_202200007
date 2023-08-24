@@ -16,9 +16,7 @@ from ListaResultado import NodoResultado,ListaResultado,obtener_dato_from_repeti
 #from ListaGrupos import ListaGrupos
 import os
 import graphviz
-#-------------------------------------
-# Add this function to menu.py
-
+#-menu
 
 #-------------------------------
 def mostrar_menu():
@@ -46,7 +44,7 @@ def mostrar_menu():
 
         if opcion == "1":
             print("-------CARGAR ARCHIVO---------")
-            ruta = input("ingresar path del xmhhhl: ")
+            ruta = input("ingresar path del xml: ")
             ar = ET.parse(ruta)
             rt = ar.getroot()
             # ITERAR SOBRE SENAL -  SENAL> DATOS
@@ -163,14 +161,17 @@ def mostrar_menu():
                     print(f"No se encontró la señal '{nombre_buscar}'.")
                 
             elif opcion5=="2":
+                snombre = input("Ingrese el nombre de la señal que desea graficar: ")
+                resultado.grafica_reducida(snombre)
 
         
-                print("MATRIZ REDUCIDA GENERADA CORRECTAMENTE")
+                print("GRAFICA DE MATRIZ REDUCIDA GENERADA CORRECTAMENTE")
             else:
                 print("ERROR - OPCION INVALIDA")
 
         elif opcion == "6":
-            print("-------Procesar lista repetida---------")
+            print("-------Inicializar sistema--------")
+            
 
         elif opcion == "7":
             print("Saliendo del sistema")

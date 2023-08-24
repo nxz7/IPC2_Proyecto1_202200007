@@ -1,0 +1,48 @@
+digraph {
+	S [label="Prueba 1"]
+	fila1 [label="Fila 1"]
+	S -> fila1
+	dato1_1 [label=2]
+	dato1_2 [label=3]
+	dato1_1 -> dato1_2
+	dato1_3 [label=0]
+	dato1_2 -> dato1_3
+	dato1_4 [label=4]
+	dato1_3 -> dato1_4
+	fila2 [label="Fila 2"]
+	S -> fila2
+	dato2_1 [label=0]
+	dato2_2 [label=0]
+	dato2_1 -> dato2_2
+	dato2_3 [label=6]
+	dato2_2 -> dato2_3
+	dato2_4 [label=3]
+	dato2_3 -> dato2_4
+	fila3 [label="Fila 3"]
+	S -> fila3
+	dato3_1 [label=3]
+	dato3_2 [label=4]
+	dato3_1 -> dato3_2
+	dato3_3 [label=0]
+	dato3_2 -> dato3_3
+	dato3_4 [label=2]
+	dato3_3 -> dato3_4
+	fila4 [label="Fila 4"]
+	S -> fila4
+	dato4_1 [label=7]
+	dato4_2 [label=7]
+	dato4_1 -> dato4_2
+	dato4_3 [label=7]
+	dato4_2 -> dato4_3
+	dato4_4 [label=7]
+	dato4_3 -> dato4_4
+	fila5 [label="Fila 5"]
+	S -> fila5
+	dato5_1 [label=0]
+	dato5_2 [label=0]
+	dato5_1 -> dato5_2
+	dato5_3 [label=3]
+	dato5_2 -> dato5_3
+	dato5_4 [label=1]
+	dato5_3 -> dato5_4
+}

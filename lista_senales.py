@@ -62,6 +62,8 @@ class lista_senales:
             print()
         else:
             print(f"No se encontró la señal '{nombre}'.")
+
+
     #SOLO DATOS, MATRIZ HACIA ABAJO 
     def generar_grafico_senal(self, nombre):
         senal = self.obtener_senal_por_nombre(nombre)
@@ -69,15 +71,15 @@ class lista_senales:
             dot = graphviz.Digraph(format='png')
             dot.node('S', nombre)
             actual_dato = senal.primero_dato
-            row_count = 0
+            fila_cuenta = 0 #fila  cuenta - para que se agrupen los datos con la misma 1 =fila
             while actual_dato:
-                if row_count == 0 or actual_dato.t != row_count:
-                    row_count = actual_dato.t
-                    dot.node(f'dato{row_count}_1', f'Fila {row_count}')
-                    dot.edge('S', f'dato{row_count}_1')
-                dot.node(f'dato{row_count}_{actual_dato.A}', str(actual_dato.valor))
+                if fila_cuenta == 0 or actual_dato.t != fila_cuenta:
+                    fila_cuenta = actual_dato.t
+                    dot.node(f'dato{fila_cuenta}_1', f'Fila {fila_cuenta}')
+                    dot.edge('S', f'dato{fila_cuenta}_1')
+                dot.node(f'dato{fila_cuenta}_{actual_dato.A}', str(actual_dato.valor))
                 if actual_dato.A > 1:
-                    dot.edge(f'dato{row_count}_{actual_dato.A-1}', f'dato{row_count}_{actual_dato.A}')
+                    dot.edge(f'dato{fila_cuenta}_{actual_dato.A-1}', f'dato{fila_cuenta}_{actual_dato.A}')
                 actual_dato = actual_dato.siguiente_dato
             dot.render(nombre, view=False)
         else:
@@ -126,9 +128,9 @@ class lista_senales:
         else:
             print(f"No se encontró la señal '{nombre}'.")
 '''
-#OTRO ESTILO DE GRAFICO - DATOS Y MATRIX PARA ABAJO
-#'''
+#otra opcion
 '''
+#OTRO ESTILO DE GRAFICO - DATOS Y MATRIX PARA ABAJO
     def generar_grafico_senal(self, nombre):
         senal = self.obtener_senal_por_nombre(nombre)
         if senal:
