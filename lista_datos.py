@@ -21,3 +21,6 @@ class lista_datos:
                 return actual.valor
             actual = actual.siguiente_dato
         return None
+    
+    def clear_listad(self):
+        self.primero = None

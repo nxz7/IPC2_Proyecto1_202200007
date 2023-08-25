@@ -1,0 +1,61 @@
+digraph {
+	"senal_Prueba 3" [label="Prueba 3"]
+	"t_values_1, 2" [label="t: 1, 2"]
+	"senal_Prueba 3" -> "t_values_1, 2"
+	data_1_2670969625888 [label="A: 1
+Dato: 7"]
+	"t_values_1, 2" -> data_1_2670969625888
+	data_2_2670969625984 [label="A: 2
+Dato: 0"]
+	"t_values_1, 2" -> data_2_2670969625984
+	data_3_2670969626080 [label="A: 3
+Dato: 8"]
+	"t_values_1, 2" -> data_3_2670969626080
+	data_1_2670969625888 [label="A: 1
+Dato: 7"]
+	"t_values_1, 2" -> data_1_2670969625888
+	data_2_2670969625984 [label="A: 2
+Dato: 0"]
+	"t_values_1, 2" -> data_2_2670969625984
+	data_3_2670969626080 [label="A: 3
+Dato: 8"]
+	"t_values_1, 2" -> data_3_2670969626080
+	data_1_2670969625888 [label="A: 1
+Dato: 7"]
+	"t_values_1, 2" -> data_1_2670969625888
+	data_2_2670969625984 [label="A: 2
+Dato: 0"]
+	"t_values_1, 2" -> data_2_2670969625984
+	data_3_2670969626080 [label="A: 3
+Dato: 8"]
+	"t_values_1, 2" -> data_3_2670969626080
+	t_values_3 [label="t: 3"]
+	"senal_Prueba 3" -> t_values_3
+	data_1_2670969626176 [label="A: 1
+Dato: 0"]
+	t_values_3 -> data_1_2670969626176
+	data_2_2670969626272 [label="A: 2
+Dato: 0"]
+	t_values_3 -> data_2_2670969626272
+	data_3_2670969626368 [label="A: 3
+Dato: 7"]
+	t_values_3 -> data_3_2670969626368
+	data_1_2670969626176 [label="A: 1
+Dato: 0"]
+	t_values_3 -> data_1_2670969626176
+	data_2_2670969626272 [label="A: 2
+Dato: 0"]
+	t_values_3 -> data_2_2670969626272
+	data_3_2670969626368 [label="A: 3
+Dato: 7"]
+	t_values_3 -> data_3_2670969626368
+	data_1_2670969626176 [label="A: 1
+Dato: 0"]
+	t_values_3 -> data_1_2670969626176
+	data_2_2670969626272 [label="A: 2
+Dato: 0"]
+	t_values_3 -> data_2_2670969626272
+	data_3_2670969626368 [label="A: 3
+Dato: 7"]
+	t_values_3 -> data_3_2670969626368
+}

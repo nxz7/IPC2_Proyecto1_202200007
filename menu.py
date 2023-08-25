@@ -99,7 +99,7 @@ def mostrar_menu():
                 lista_comparacion.insertar(nombre_senal, t_comun, string_datos_comun)
                 actual_senal = actual_senal.siguiente_senal
 
-#IMPRIMIR lista_comparacion
+#IMPRIMIR lista_comparacion - ver si quedo bien
             actual_nodo_comparacion = lista_comparacion.primero
             while actual_nodo_comparacion:
                 print("Nombre:", actual_nodo_comparacion.nombre)
@@ -133,7 +133,7 @@ def mostrar_menu():
 
         elif opcion == "3":
             print("-------archivo de salida---------")
-            user_file_path = input("ingrese la ruta donde desea guardar el archivo: ")
+            user_file_path = input("ingrese la ruta donde desea guardar el archivo - xml: ")
 
             xml_data = xml_de_resultado(resultado)
             guardar_xml(xml_data, user_file_path)
@@ -142,7 +142,7 @@ def mostrar_menu():
         elif opcion == "4":
             print("NATALIA MARIEL CALDERON ECHEVERRIA")
             print("202200007")
-            print("INTRODUCCION A LA PROGRAMACION Y COMPUTACION 2 - ")
+            print("INTRODUCCION A LA PROGRAMACION Y COMPUTACION 2 - D ")
             print("4to SEMESTRE")
         elif opcion == "5":
             print("-------GENERAR GRAFICA---------")
@@ -171,7 +171,13 @@ def mostrar_menu():
 
         elif opcion == "6":
             print("-------Inicializar sistema--------")
-            
+            lista_senalesM.clear_lista()
+            lista_bi.clear_lista()
+            lista_datosM.clear_listad()
+            resultado.clear_listaR()
+            lista_repetidos.clear_listaRep()
+            lista_comparacion.clear_listaC()
+            print("-------Sistema inicializado--------")
 
         elif opcion == "7":
             print("Saliendo del sistema")

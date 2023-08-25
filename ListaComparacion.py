@@ -13,3 +13,6 @@ class ListaComparacion:
             while actual.siguiente:
                 actual = actual.siguiente
             actual.siguiente = nuevo_nodo
+    
+    def clear_listaC(self):
+        self.primero = None

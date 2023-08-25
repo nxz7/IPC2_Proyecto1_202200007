@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<senalesReducidas>
+   <senal nombre="Prueba 2.1" A="1">
+      <grupo g="1">
+         <tiempos>1, 2</tiempos>
+         <datosGrupo>
+            <dato A="1">2</dato>
+            <dato A="2">4</dato>
+            <dato A="3">6</dato>
+         </datosGrupo>
+      </grupo>
+      <grupo g="3">
+         <tiempos>3</tiempos>
+         <datosGrupo>
+            <dato A="1">0</dato>
+            <dato A="2">0</dato>
+            <dato A="3">7</dato>
+         </datosGrupo>
+      </grupo>
+   </senal>
+   <senal nombre="Prueba 2.2" A="1">
+      <grupo g="1">
+         <tiempos>1</tiempos>
+         <datosGrupo>
+            <dato A="1">2</dato>
+            <dato A="2">2</dato>
+            <dato A="3">2</dato>
+         </datosGrupo>
+      </grupo>
+      <grupo g="2">
+         <tiempos>2</tiempos>
+         <datosGrupo>
+            <dato A="1">7</dato>
+            <dato A="2">0</dato>
+            <dato A="3">0</dato>
+         </datosGrupo>
+      </grupo>
+      <grupo g="3">
+         <tiempos>3</tiempos>
+         <datosGrupo>
+            <dato A="1">0</dato>
+            <dato A="2">0</dato>
+            <dato A="3">7</dato>
+         </datosGrupo>
+      </grupo>
+   </senal>
+</senalesReducidas>

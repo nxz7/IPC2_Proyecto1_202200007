@@ -12,3 +12,6 @@ class ListaRepetidos:
             while actual.siguiente:
                 actual = actual.siguiente
             actual.siguiente = nuevo_nodo
+    
+    def clear_listaRep(self):
+        self.primero = None

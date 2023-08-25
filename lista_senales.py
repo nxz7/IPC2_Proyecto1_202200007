@@ -104,6 +104,9 @@ class lista_senales:
                     return actual_dato.valor
                 actual_dato = actual_dato.siguiente_dato
         return 0
+    
+    def clear_lista(self):
+        self.primero = None
 
 #FILAS - HORIZONTAS
 '''

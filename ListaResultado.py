@@ -99,29 +99,10 @@ class ListaResultado:
 
         dot.render(f'{snombre}_REDUCIDA', view=True)
 
+    def clear_listaR(self):
+        self.primero = None
 
-'''
-def obtener_dato_from_repetidos_and_senales(lista_repetidos, lista_senalesM):
-    resultado = ListaResultado()
-    
-    actual_repetidos = lista_repetidos.primero
-    while actual_repetidos:
-        nombre = actual_repetidos.nombre
-        t_values = actual_repetidos.t_values
-        
-        A = 1
-        while lista_senalesM.existe_senal(nombre, t_values.primero.t, A):
-            dato = 0
-            actual_t = t_values.primero
-            while actual_t:
-                dato += lista_senalesM.obtener_valor(nombre, actual_t.t, A)
-                actual_t = actual_t.siguiente
-            resultado.insertar(nombre, t_values, A, dato)
-            A += 1
-        actual_repetidos = actual_repetidos.siguiente
-        
-    return resultado
-'''
+
 def obtener_dato_from_repetidos_and_senales(lista_repetidos, lista_senalesM):
     resultado = ListaResultado()
     
