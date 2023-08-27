@@ -43,8 +43,8 @@ class ListaResultado:
     def grafica_reducida(self, snombre):
         dot = graphviz.Digraph(format='png')
 
-        found_signal = False
-        signal_node_id = None
+        senal_encon = False
+        s_node_id = None
         t_nodes = None  
 
         class TNode:
@@ -55,11 +55,11 @@ class ListaResultado:
 
         for nodo_resultado in self.iterar():
             if nodo_resultado.nombre == snombre:
-                found_signal = True
+                senal_encon = True
 
-                if signal_node_id is None:
-                    signal_node_id = f'senal_{snombre}'
-                    dot.node(signal_node_id, snombre)
+                if s_node_id is None:
+                    s_node_id = f'senal_{snombre}'
+                    dot.node(s_node_id, snombre)
 
                 t_value = nodo_resultado.t_values
                 t_values_str = ', '.join(str(t) for t in t_value.iterar())
@@ -67,7 +67,7 @@ class ListaResultado:
                 if t_nodes is None:
                     t_node_id = f't_values_{t_values_str}'
                     dot.node(t_node_id, f"t: {t_values_str}")
-                    dot.edge(signal_node_id, t_node_id)
+                    dot.edge(s_node_id, t_node_id)
                     t_nodes = TNode(t_value, t_node_id)
                 else:
                     prev_t_node = None
@@ -81,7 +81,7 @@ class ListaResultado:
                     else:
                         t_node_id = f't_values_{t_values_str}'
                         dot.node(t_node_id, f"t: {t_values_str}")
-                        dot.edge(signal_node_id, t_node_id)
+                        dot.edge(s_node_id, t_node_id)
                         new_t_node = TNode(t_value, t_node_id)
                         prev_t_node.next = new_t_node
 
@@ -93,7 +93,7 @@ class ListaResultado:
                         dot.edge(t_node_id, data_node_id)
                     actual = actual.siguiente
 
-        if not found_signal:
+        if not senal_encon:
             print(f"SEÑAL'{snombre}' NO EXISTE")
             return
 

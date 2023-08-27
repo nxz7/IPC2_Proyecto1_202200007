@@ -1,5 +1,5 @@
 digraph {
-	S [label="Prueba 1"]
+	S [label="Prueba 2"]
 	dato1_1 [label="Fila 1"]
 	S -> dato1_1
 	dato1_1 [label=2]
@@ -29,20 +29,11 @@ digraph {
 	dato3_3 -> dato3_4
 	dato4_1 [label="Fila 4"]
 	S -> dato4_1
-	dato4_1 [label=7]
-	dato4_2 [label=7]
+	dato4_1 [label=1]
+	dato4_2 [label=0]
 	dato4_1 -> dato4_2
-	dato4_3 [label=7]
+	dato4_3 [label=1]
 	dato4_2 -> dato4_3
-	dato4_4 [label=7]
+	dato4_4 [label=5]
 	dato4_3 -> dato4_4
-	dato5_1 [label="Fila 5"]
-	S -> dato5_1
-	dato5_1 [label=0]
-	dato5_2 [label=0]
-	dato5_1 -> dato5_2
-	dato5_3 [label=3]
-	dato5_2 -> dato5_3
-	dato5_4 [label=1]
-	dato5_3 -> dato5_4
 }
